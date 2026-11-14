@@ -11,7 +11,10 @@ export function CategoryHeader({ category, total, explicit }: { category: Catego
         <Sleeve category={category} artists={artists} peek sizes="120px" />
       </div>
       <div>
-        <Breadcrumbs items={[{ label: "Início", href: "/" }, { label: category.name }]} />
+        <Breadcrumbs
+          back={{ href: "/", label: "Voltar para o início" }}
+          items={[{ label: "Início", href: "/" }, { label: category.name }]}
+        />
         <h1 className="display mt-3 text-6xl sm:text-8xl">{category.name}</h1>
         <p className="mt-3 text-lg text-muted">
           Adivinhe músicas de {category.name}: {category.description.toLowerCase()}
