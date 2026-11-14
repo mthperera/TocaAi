@@ -2,6 +2,8 @@
 
 Jogo de adivinhar música. Todo dia sai um disco novo: você ouve um pedaço, chuta, e se errar ouve mais um pouco.
 
+**Jogue em [toca-ai-theta.vercel.app](https://toca-ai-theta.vercel.app)**
+
 ![Home do Toca Aí](docs/img/home.jpg)
 
 Tem funk, sertanejo, pagode, rock, pop, MPB, rap, forró e axé, latina, k-pop, eletrônica, anos 80, 90, 2000 e 2010, os virais do TikTok, o Top Brasil do momento e um mix de tudo. São mais de 3.600 músicas.
