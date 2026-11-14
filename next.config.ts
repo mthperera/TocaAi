@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   cacheComponents: true,
   devIndicators: false,
+  agentRules: false,
   partialPrefetching: true,
   images: {
     unoptimized: true,
