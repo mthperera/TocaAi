@@ -1,0 +1,227 @@
+[
+  {
+    "id": "tiktok-2026",
+    "name": "Top TikTok 2026",
+    "description": "Os virais do momento",
+    "color": "#fe2c55",
+    "playlists": [7366743164, 1299844827, 10508434522, 10166051862]
+  },
+  {
+    "id": "top-brasil",
+    "name": "Top Brasil agora",
+    "description": "O chart oficial agora",
+    "color": "#00a650",
+    "playlists": [1111141961, 1592591647]
+  },
+  {
+    "id": "funk",
+    "name": "Funk",
+    "description": "Das antigas ao do momento",
+    "color": "#ff6b00",
+    "playlists": [9743264302, 1183242961, 5471414582, 6678103804],
+    "exclude": [
+      "Marina Sena — CARNAVAL",
+      "Latino — Me Leva",
+      "Stevie B — I Wanna Be The One"
+    ]
+  },
+  {
+    "id": "pop",
+    "name": "Pop",
+    "description": "Hits nacionais e gringos",
+    "color": "#ff5ca8",
+    "playlists": [1036183001, 8282573142, 8326097522, 1310668095],
+    "exclude": [
+      "Evanescence — My Immortal",
+      "Sum 41 — In Too Deep",
+      "Europe — The Final Countdown"
+    ]
+  },
+  {
+    "id": "rock",
+    "name": "Rock",
+    "description": "Clássicos daqui e de fora",
+    "color": "#d7261e",
+    "playlists": [1306931615, 9268293682, 5619143162, 5619144082],
+    "exclude": [
+      "Rosana — O Amor e o Poder (The Power of Love)",
+      "Ed Motta — Manuel",
+      "Ed Motta — Vamos dançar",
+      "Jane Duboc — Sonhos",
+      "Guilherme Arantes — Cheia de Charme"
+    ]
+  },
+  {
+    "id": "sertanejo",
+    "name": "Sertanejo",
+    "description": "Do modão ao feminejo",
+    "color": "#b06a2c",
+    "playlists": [5207214368, 1336751325, 5518744242, 5519638442],
+    "exclude": [
+      "DJ Kevin — É Linda Mas é Lisa",
+      "Fagner — Borbulhas de Amor (Tenho um Coração) [Borbujas de Amor]",
+      "Fagner — Cabecinha no Ombro (feat. Roberta Miranda)",
+      "Tchê Garotos — Menininha"
+    ]
+  },
+  {
+    "id": "pagode",
+    "name": "Pagode & Samba",
+    "description": "Dos anos 90 até hoje",
+    "color": "#f4b400",
+    "playlists": [1188698803, 6119830224, 6119915844],
+    "exclude": [
+      "Sampa Crew — Eterno Amor"
+    ]
+  },
+  {
+    "id": "rap-trap",
+    "name": "Rap & Trap BR",
+    "description": "Rap, trap e drill",
+    "color": "#8ac926",
+    "playlists": [11881565941, 5656652602, 5658958102],
+    "exclude": [
+      "Mc Kevin — Vergonha Pra Mídia 3",
+      "Charlie Brown JR. / Part. Especial: Sacramento MC's — Vivendo A Vida Numa Louca Viagem"
+    ]
+  },
+  {
+    "id": "mpb",
+    "name": "MPB",
+    "description": "Os clássicos da MPB",
+    "color": "#2a9d8f",
+    "playlists": [556502217, 5691936222],
+    "exclude": [
+      "Charlie Brown Jr. — Zóio De Lula",
+      "Skank — Resposta",
+      "Os Paralamas do Sucesso — Aonde Quer Que Eu Vá",
+      "Los Hermanos — Anna Júlia",
+      "Engenheiros do Hawaii — Era um Garoto, Que Como Eu, Amava os Beatles e os Rolling Stones",
+      "Jota Quest — Fácil",
+      "Os Paralamas do Sucesso — Uma Brasileira",
+      "Biquini Cavadão — Vento Ventania",
+      "Cidade Negra — A Estrada",
+      "Leoni — Garotos II - O Outro Lado",
+      "Kid Abelha — Como eu quero",
+      "Capital Inicial — Eu Vou Estar",
+      "Jota Quest — Sempre Assim",
+      "Os Paralamas do Sucesso — Meu Erro",
+      "Os Paralamas do Sucesso — Saber Amar",
+      "Legião Urbana — Mais Do Mesmo",
+      "Kid Abelha — Por que não eu?",
+      "Pato Fu — Sobre o Tempo",
+      "Banda Eddie — O Baile de Betinha",
+      "Ira! — Você Não Serve Pra Mim"
+    ]
+  },
+  {
+    "id": "forro-axe",
+    "name": "Forró & Axé",
+    "description": "Pra dançar e pular",
+    "color": "#e76f51",
+    "playlists": [1450851327, 6880421184, 7749555642]
+  },
+  {
+    "id": "anos-80",
+    "name": "Anos 80",
+    "description": "Hits de 1980 a 1989",
+    "color": "#7b2ff7",
+    "playlists": [
+      { "id": 10727755642, "year": 1980 },
+      { "id": 10704004302, "year": 1981 },
+      { "id": 10702272842, "year": 1982 },
+      { "id": 10701318182, "year": 1983 },
+      { "id": 10699860242, "year": 1984 },
+      { "id": 10698676702, "year": 1985 },
+      { "id": 10685554042, "year": 1986 },
+      { "id": 10684010922, "year": 1987 },
+      { "id": 10678781122, "year": 1988 },
+      { "id": 10133312182, "year": 1989 },
+      5619143162,
+      5691936982
+    ]
+  },
+  {
+    "id": "anos-90",
+    "name": "Anos 90",
+    "description": "Hits de 1991 a 1999",
+    "color": "#3a86ff",
+    "playlists": [
+      { "id": 9920509622, "year": 1991 },
+      { "id": 9920680402, "year": 1992 },
+      { "id": 9920803062, "year": 1993 },
+      { "id": 9927915042, "year": 1994 },
+      { "id": 9931111742, "year": 1995 },
+      { "id": 9941287122, "year": 1996 },
+      { "id": 10385482422, "year": 1997 },
+      { "id": 10423994242, "year": 1998 },
+      { "id": 10660130722, "year": 1999 },
+      989343587,
+      6119830224
+    ]
+  },
+  {
+    "id": "anos-2000",
+    "name": "Anos 2000",
+    "description": "A era do MP3 e do MSN",
+    "color": "#00b4d8",
+    "playlists": [
+      { "id": 11837091441, "year": 2000 },
+      { "id": 11837090081, "year": 2001 },
+      { "id": 11837088801, "year": 2002 },
+      { "id": 11837087601, "year": 2003 },
+      { "id": 11837085661, "year": 2004 },
+      { "id": 11837082861, "year": 2005 },
+      { "id": 11837078821, "year": 2006 },
+      { "id": 11837077721, "year": 2007 },
+      { "id": 4091244662, "year": 2008 },
+      { "id": 5361722742, "year": 2009 },
+      3859951986,
+      5441594162
+    ]
+  },
+  {
+    "id": "anos-2010",
+    "name": "Anos 2010",
+    "description": "Hits de 2010 a 2019",
+    "color": "#8338ec",
+    "playlists": [
+      { "id": 5339620562, "year": 2010 },
+      { "id": 5313710582, "year": 2011 },
+      { "id": 5311155022, "year": 2012 },
+      { "id": 5310925582, "year": 2013 },
+      { "id": 5310662982, "year": 2014 },
+      { "id": 5310238702, "year": 2015 },
+      { "id": 5310088722, "year": 2016 },
+      { "id": 3453772742, "year": 2017 },
+      { "id": 5132762464, "year": 2018 },
+      { "id": 1283499335, "year": 2019 },
+      10631083602,
+      9040974842
+    ]
+  },
+  {
+    "id": "latina",
+    "name": "Latina & Reggaeton",
+    "description": "Reggaeton e bachata",
+    "color": "#e63946",
+    "playlists": [1273315391, 789123393]
+  },
+  {
+    "id": "kpop",
+    "name": "K-pop",
+    "description": "O melhor do pop coreano",
+    "color": "#ff8fab",
+    "playlists": [4096400722]
+  },
+  {
+    "id": "eletronica",
+    "name": "Eletrônica",
+    "description": "EDM, house e pista",
+    "color": "#4361ee",
+    "playlists": [1902101402],
+    "exclude": [
+      "The Notorious B.I.G. — Notorious Thugs (feat. Bone Thugs-n-Harmony) [Solomun Remix]"
+    ]
+  }
+]
