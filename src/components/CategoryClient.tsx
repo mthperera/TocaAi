@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { DIFFICULTIES, isDifficulty, textOn, type Category, type Difficulty } from "@/lib/categories";
-import { dayNumber, formatDay, keyFromDayNumber, randomSeed } from "@/lib/daily";
+import { dayNumber, formatDay, keyFromDayNumber } from "@/lib/daily";
 import { ladderStages, MODES, type ModeId } from "@/lib/modes";
 import { gameKey, useProgress, useToday, type SavedGame } from "@/lib/progress";
 import { Countdown, GameStatus, ModeIcon, Vinyl, gameTone } from "./ui";
@@ -72,7 +72,7 @@ export function CategoryClient({ category, pools }: { category: Category; pools:
             Hoje <span className="text-muted">nº {todayNumber || ""}</span>
           </h2>
           <span className="font-mono text-xs text-muted">
-            próximos em <Countdown className="text-fg" />
+            Próximos em <Countdown className="text-fg" />
           </span>
         </div>
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -94,13 +94,6 @@ export function CategoryClient({ category, pools }: { category: Category; pools:
                 <span className="display block text-3xl">{m.name}</span>
               </Link>
               <p className="mt-1 flex-1 text-sm text-muted">{m.tagline}</p>
-              <button
-                onClick={() => router.push(`/jogar/${category.id}/${m.id}?nivel=${difficulty}&treino=${randomSeed()}`)}
-                className="relative z-10 mt-3 self-start font-mono text-xs text-muted underline-offset-4 hover:text-fg hover:underline"
-                title="Músicas aleatórias, sem contar no desafio do dia"
-              >
-                treino livre
-              </button>
             </div>
           ))}
         </div>
