@@ -143,16 +143,16 @@ export function CategoryClient({ category, pools }: { category: Category; pools:
         )}
         <p className="mt-6 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted">
           <span className="inline-flex items-center gap-1.5">
-            <span className="size-2.5 rounded-full bg-good" /> acertou
+            <span className="size-2.5 rounded-full bg-good" /> Acertou
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <span className="size-2.5 rounded-full bg-bad" /> errou
+            <span className="size-2.5 rounded-full bg-bad" /> Errou
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <span className="size-2.5 rounded-full bg-mid" /> em andamento
+            <span className="size-2.5 rounded-full bg-mid" /> Em andamento
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <span className="size-2.5 rounded-full" style={{ background: category.color }} /> não jogado
+            <span className="size-2.5 rounded-full" style={{ background: category.color }} /> Não jogado
           </span>
         </p>
       </section>
