@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { Anton, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
@@ -91,6 +92,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </a>
           )}
         </footer>
+        <Analytics />
       </body>
     </html>
   );
