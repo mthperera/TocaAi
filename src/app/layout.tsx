@@ -63,7 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </span>
             <span className="leading-none">
               <span className="display block text-[34px] transition group-hover:text-accent sm:text-[40px]">Toca Aí</span>
-              <span className="block font-mono text-[11px] text-muted">jogo de adivinhar música</span>
+              <span className="block font-mono text-[11px] text-muted">Jogo de adivinhar música</span>
             </span>
           </Link>
           <nav className="flex items-center gap-5">
