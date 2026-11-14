@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { addDays, dateKey, msUntilNextDay } from "./daily";
+import { dateKey, msUntilNextDay } from "./daily";
 
 export type GuessResult = "correct" | "artist" | "wrong" | "skip";
 
@@ -85,27 +85,6 @@ export function isWin(game: SavedGame | undefined): boolean {
   if (!game) return false;
   if (game.kind === "ladder") return game.status === "won";
   return game.status === "done" && game.total > 0;
-}
-
-export type Stats = { played: number; wins: number; streak: number };
-
-export function computeStats(store: Store, today: string): Stats {
-  const days = new Set<string>();
-  let played = 0;
-  let wins = 0;
-  for (const [key, game] of Object.entries(store.games)) {
-    if (!isFinished(game)) continue;
-    played++;
-    if (isWin(game)) wins++;
-    days.add(key.split("|")[0]);
-  }
-  let streak = 0;
-  let cursor = days.has(today) ? today : addDays(today, -1);
-  while (days.has(cursor)) {
-    streak++;
-    cursor = addDays(cursor, -1);
-  }
-  return { played, wins, streak };
 }
 
 function subscribeDay(listener: () => void) {

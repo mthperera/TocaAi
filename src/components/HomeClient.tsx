@@ -5,7 +5,7 @@ import Link from "next/link";
 import { artistPictureUrl, categories, categoryArtists, DIFFICULTIES, textOn, type Category } from "@/lib/categories";
 import { dayNumber } from "@/lib/daily";
 import { MODES } from "@/lib/modes";
-import { computeStats, gameKey, useProgress, useToday, type SavedGame } from "@/lib/progress";
+import { gameKey, useProgress, useToday, type SavedGame } from "@/lib/progress";
 import { Sleeve } from "./Sleeve";
 import { Countdown, ExplicitBadge, Square, Vinyl, gameTone } from "./ui";
 
@@ -27,7 +27,6 @@ const shelf = (() => {
 export function HomeClient({ info }: { info: Info }) {
   const today = useToday();
   const progress = useProgress();
-  const stats = today ? computeStats(progress, today) : null;
   const day = today ? dayNumber(today) : null;
   const featured = categories[((day ?? 1) * 5) % (categories.length - 1)];
   const dateLabel = today
@@ -47,14 +46,12 @@ export function HomeClient({ info }: { info: Info }) {
           </h1>
           <p className="mt-2 text-muted first-letter:uppercase">{dateLabel}</p>
         </div>
-        <div className="sm:text-right">
-          <p className="font-mono text-xs text-muted">próximo disco em</p>
-          <Countdown className="text-3xl" />
-          {stats && stats.played > 0 && (
-            <p className="mt-1 font-mono text-xs text-muted">
-              sequência {stats.streak} · vitórias {stats.wins}/{stats.played}
-            </p>
-          )}
+        <div className="flex items-center gap-4 rounded-2xl bg-fg py-4 pr-6 pl-4 text-bg shadow-[0_14px_30px_-16px_rgb(0_0_0/0.6)]">
+          <Vinyl color="var(--accent)" spinning slow className="size-14 shrink-0" />
+          <div>
+            <p className="font-mono text-xs opacity-70">Próximo disco em</p>
+            <Countdown className="text-4xl leading-tight font-medium sm:text-5xl" />
+          </div>
         </div>
       </section>
 
