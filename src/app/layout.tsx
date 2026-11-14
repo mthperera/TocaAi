@@ -11,7 +11,7 @@ const anton = Anton({ variable: "--font-anton", subsets: ["latin"], weight: "400
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} · jogo de adivinhar música`,
+    default: `${SITE_NAME} · Jogo de adivinhar música`,
     template: `%s · ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -32,12 +32,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: SITE_NAME,
-    title: `${SITE_NAME} · jogo de adivinhar música`,
+    title: `${SITE_NAME} · Jogo de adivinhar música`,
     description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} · jogo de adivinhar música`,
+    title: `${SITE_NAME} · Jogo de adivinhar música`,
     description: SITE_DESCRIPTION,
   },
 };

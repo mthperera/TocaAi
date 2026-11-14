@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = getCategory(categoria);
   const mode = getMode(modo);
   if (!category || !mode) return {};
-  const title = `${mode.name} · adivinhe a música de ${category.name}`;
+  const title = `${mode.name} · Adivinhe a música de ${category.name}`;
   const description = `${mode.howTo} Músicas de ${category.name.toLowerCase()}, com desafio novo todo dia.`;
   return {
     title,
