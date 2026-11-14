@@ -9,12 +9,13 @@ import {
   isDifficulty,
   type Difficulty,
 } from "@/lib/categories";
-import { dailyTracks, dayNumber, formatDay, isDateKey, keyFromDayNumber, randomSeed } from "@/lib/daily";
+import { dailyTracks, dayNumber, formatDay, isDateKey, randomSeed } from "@/lib/daily";
 import { getMode, type Mode } from "@/lib/modes";
 import { gameKey, useProgress, useToday } from "@/lib/progress";
-import { Countdown, Square, buttonSecondary, gameTone } from "../ui";
+import { Countdown, buttonSecondary } from "../ui";
 import { Breadcrumbs } from "../Breadcrumbs";
 import { BlitzGame } from "./BlitzGame";
+import { DayPicker } from "./DayPicker";
 import { LadderGame } from "./LadderGame";
 import { Playable } from "./Playable";
 import { YearGame } from "./YearGame";
@@ -44,54 +45,31 @@ export function GameNav({ categoryId, modeId }: { categoryId: string; modeId: st
     categoryId,
     modeId,
   );
-  const progress = useProgress();
-  const days = Array.from({ length: todayN }, (_, i) => todayN - i);
-
   return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
-        <Breadcrumbs
-          items={[
-            { label: "Início", href: "/" },
-            { label: `${category.name} · ${difficultyName}`, href: categoryHref },
-            { label: mode.name },
-          ]}
-        />
-        {practice && <span className="font-mono text-xs text-muted">treino livre</span>}
-      </div>
-      {!practice && today && (
-        <div className="flex items-center gap-3">
-          <span className="shrink-0 text-sm font-semibold">Dia:</span>
-          <div className="-my-1 flex gap-1.5 overflow-x-auto py-1">
-            {days.map((d) => {
-              const key = keyFromDayNumber(d);
-              const tone = gameTone(progress.games[gameKey(key, category.id, mode.id, difficulty)]);
-              const selected = d === n;
-              return (
-                <Link
-                  key={d}
-                  href={d === todayN ? base : `${base}&dia=${key}`}
-                  aria-current={selected ? "date" : undefined}
-                  className={`flex shrink-0 items-center gap-1.5 rounded-full border-2 px-3 py-1 font-mono text-xs transition ${
-                    selected ? "border-fg bg-fg text-bg" : "border-line hover:border-fg"
-                  }`}
-                >
-                  {tone !== "empty" && <Square tone={tone} className="size-2 rounded-full" />}
-                  nº {d}
-                  <span className={selected ? "opacity-70" : "text-muted"}>
-                    {d === todayN ? "hoje" : formatDay(key)}
-                  </span>
-                </Link>
-              );
-            })}
-            <span
-              title="Libera à meia-noite"
-              className="flex shrink-0 items-center gap-1.5 rounded-full border-2 border-dashed border-line px-3 py-1 font-mono text-xs text-muted"
-            >
-              nº {todayN + 1} amanhã
-            </span>
-          </div>
-        </div>
+    <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+      <Breadcrumbs
+        back={{ href: categoryHref, label: `Voltar para ${category.name}` }}
+        items={[
+          { label: "Início", href: "/" },
+          { label: `${category.name} · ${difficultyName}`, href: categoryHref },
+          { label: mode.name },
+        ]}
+      />
+      {practice ? (
+        <span className="font-mono text-xs text-muted">treino livre</span>
+      ) : (
+        today && (
+          <DayPicker
+            base={base}
+            categoryId={category.id}
+            categoryColor={category.color}
+            modeId={mode.id}
+            difficulty={difficulty}
+            title={`${mode.name} · ${category.name} · ${difficultyName}`}
+            current={n}
+            today={todayN}
+          />
+        )
       )}
     </div>
   );
