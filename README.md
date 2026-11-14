@@ -1,52 +1,68 @@
 # Toca Aí
 
-Adivinhe a música do dia.
+Jogo de adivinhar música. Todo dia sai um disco novo: você ouve um pedaço, chuta, e se errar ouve mais um pouco.
 
-Jogo diário de adivinhar músicas. Todo dia abre um desafio novo para cada categoria, modo e nível. Os dias anteriores ficam no arquivo e os próximos aparecem trancados.
+![Home do Toca Aí](docs/img/home.jpg)
 
-## Rodando
-
-```bash
-npm install
-npm run dev        # http://localhost:3000
-```
-
-## Publicar (Vercel)
-
-1. Suba o código para um repositório no GitHub.
-2. Em [vercel.com/new](https://vercel.com/new), importe o repositório e clique em **Deploy**. Não precisa de configuração: a Vercel detecta o Next.js.
-3. Opcional: crie a variável `NEXT_PUBLIC_CONTATO` (um `mailto:` ou link) para aparecer no rodapé o contato de quem quiser pedir a remoção de uma música.
-4. Se usar um domínio próprio, crie `NEXT_PUBLIC_SITE_URL` (ex.: `https://tocaai.com.br`). Sem ela, o sitemap e os links de compartilhamento usam o domínio de produção da Vercel.
-
-As imagens vêm direto do CDN do Deezer (`images.unoptimized`), o áudio vem direto do Deezer e o link da prévia fica em cache na CDN até perto de expirar: o site gasta pouco do plano gratuito e chama pouco a API do Deezer.
-
-## SEO
-
-Cada categoria e cada modo têm título e descrição próprios. O site gera `sitemap.xml`, `robots.txt` e a imagem de compartilhamento (`opengraph-image`), e a home traz dados estruturados (`VideoGame`). Depois de publicar, cadastre o domínio no [Google Search Console](https://search.google.com/search-console) e envie o sitemap.
-
-## Modos
-
-| Modo | Como funciona | Inspirado em |
-| --- | --- | --- |
-| Clássico | Trecho de 1s, 2s, 4s, 7s, 11s e 16s | Heardle |
-| Ao contrário | Trecho tocado de trás pra frente, cada vez maior | Reverse Heardle |
-| Debaixo d'água | Filtro passa-baixa que vai abrindo | Muffled Heardle |
-| Capa pixelada | Capa do álbum ganhando resolução | Albumle |
-| Relâmpago | 10 músicas, 4 opções, pontos por velocidade | SongPop |
-| Qual o ano? | Chute o ano em que a música estava nas paradas | Musiqal |
+Tem funk, sertanejo, pagode, rock, pop, MPB, rap, forró e axé, latina, k-pop, eletrônica, anos 80, 90, 2000 e 2010, os virais do TikTok, o Top Brasil do momento e um mix de tudo. São mais de 3.600 músicas.
 
 ## Como funciona
 
-- **Catálogo**: `npm run catalog` lê as playlists editoriais do Deezer listadas em `src/data/categories.json` e gera `src/data/catalog.json` (título, artista, capa, popularidade e ano). As playlists "Top Hits AAAA" dão o ano usado nas décadas e no modo "Qual o ano?". Para criar ou mudar uma categoria, edite o JSON e rode o comando de novo.
-- **Dificuldade**: cada categoria é ordenada pelo `rank` do Deezer (popularidade). Fácil = 30% mais ouvidas, Médio = de 30% a 65%, Difícil = o resto.
-- **Desafio do dia**: o sorteio é determinístico (`src/lib/daily.ts`), então todo mundo recebe a mesma música no mesmo dia, sem banco de dados. Cada modo percorre o pool embaralhado sem repetir até acabar. O dia #1 é `LAUNCH_DATE`. Se você regenerar o catálogo, os sorteios dos dias passados mudam.
-- **Áudio**: `/api/preview/[id]` devolve um link novo da prévia de 30s (os links do Deezer expiram). O navegador baixa o MP3 direto do CDN do Deezer, que libera CORS, e a Web Audio API inverte e filtra o som. Se o download direto falhar, `?stream=1` repassa o áudio pelo servidor como plano B.
-- **Progresso**: fica no `localStorage` do navegador e é salvo a cada chute.
+Escolha uma categoria e um nível. Cada combinação tem um desafio novo por dia, igual para todo mundo, e os dias que você perdeu ficam guardados para jogar depois.
 
-## Direitos autorais
+- **Fácil**: as músicas mais tocadas da categoria.
+- **Médio**: o meio do ranking.
+- **Difícil**: o lado B, só pra quem manja.
+- **Todas**: qualquer música da categoria.
 
-O projeto não guarda músicas: o catálogo tem só metadados, e o áudio é a prévia de 30 s baixada direto do CDN do Deezer, na hora. Mesmo assim, os [termos da API do Deezer](https://developers.deezer.com/termsofuse) limitam o uso a fins não comerciais e uso privado, e pedem aprovação prévia para usos fora do previsto. Pontos de atenção antes de publicar:
+![Página da categoria Anos 90](docs/img/categoria.jpg)
 
-- Inverter e filtrar o áudio (modos Ao contrário e Debaixo d'água) altera o conteúdo, e os termos não preveem isso.
-- O plano B `/api/preview/[id]?stream=1` repassa o áudio pelo nosso domínio (só é usado se o download direto falhar).
-- Qualquer monetização (anúncios, assinatura) exige acordo com o Deezer ou licença das gravadoras e editoras.
+## Os modos
+
+### Clássico
+
+Começa com 1 segundo de música. Cada erro ou pulo libera mais: 1, 2, 4, 7, 11 e 16 segundos. Seis chances.
+
+![Modo Clássico](docs/img/classico.jpg)
+
+### Ao contrário
+
+O trecho toca de trás pra frente, cada vez maior. Nas duas últimas chances ele toca do jeito certo.
+
+### Debaixo d'água
+
+A música começa abafada, como se estivesse tocando na casa do vizinho, e vai ficando nítida a cada tentativa.
+
+### Capa pixelada
+
+Sem som. A capa do álbum aparece em blocos e ganha resolução a cada chute.
+
+![Modo Capa pixelada](docs/img/capa.jpg)
+
+### Relâmpago
+
+Dez músicas seguidas, quatro opções cada. Quanto mais rápido você acerta, mais pontos ganha.
+
+![Modo Relâmpago](docs/img/relampago.jpg)
+
+### Qual o ano?
+
+Você vê e ouve a música e chuta o ano em que ela estava nas paradas. Acertar na mosca vale 100 pontos.
+
+![Modo Qual o ano?](docs/img/ano.jpg)
+
+## Quando acaba
+
+O rótulo do disco vira a capa da música e ela toca inteira.
+
+![Tela de resultado](docs/img/resultado.jpg)
+
+## Jogando outros dias
+
+Perdeu o desafio de ontem? Em "Trocar dia" aparecem todos os dias, com a cor de cada disco mostrando se você acertou, errou ou ainda não jogou.
+
+![Escolha do dia](docs/img/dias.jpg)
+
+## Créditos
+
+Prévias de 30 segundos, capas e fotos: [Deezer](https://www.deezer.com). Projeto sem fins lucrativos.
