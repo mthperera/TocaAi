@@ -64,6 +64,12 @@ function artistPicture(artist) {
 }
 
 for (const cat of categories) {
+  const excluded = new Set(
+    (cat.exclude ?? []).map((label) => {
+      const [artist, title] = label.split(" — ");
+      return `${normalize(artist)}|${normalize(title)}`;
+    }),
+  );
   membership[cat.id] = new Set();
   artistsByCategory[cat.id] = new Map();
   for (const entry of cat.playlists) {
@@ -82,6 +88,7 @@ for (const cat of categories) {
       if (!t.readable || !t.preview || !t.md5_image || t.type !== "track") continue;
       const title = t.title_short || t.title;
       const key = `${normalize(t.artist.name)}|${normalize(title)}`;
+      if (excluded.has(key)) continue;
       const prev = byKey.get(key);
       if (!prev) {
         byKey.set(key, {

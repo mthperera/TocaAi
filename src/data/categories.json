@@ -18,49 +18,101 @@
     "name": "Funk",
     "description": "Das antigas ao do momento",
     "color": "#ff6b00",
-    "playlists": [9743264302, 1183242961, 5471414582, 6678103804]
+    "playlists": [9743264302, 1183242961, 5471414582, 6678103804],
+    "exclude": [
+      "Marina Sena — CARNAVAL",
+      "Latino — Me Leva",
+      "Stevie B — I Wanna Be The One"
+    ]
   },
   {
     "id": "pop",
     "name": "Pop",
     "description": "Hits nacionais e gringos",
     "color": "#ff5ca8",
-    "playlists": [1036183001, 8282573142, 8326097522, 1310668095]
+    "playlists": [1036183001, 8282573142, 8326097522, 1310668095],
+    "exclude": [
+      "Evanescence — My Immortal",
+      "Sum 41 — In Too Deep",
+      "Europe — The Final Countdown"
+    ]
   },
   {
     "id": "rock",
     "name": "Rock",
     "description": "Clássicos daqui e de fora",
     "color": "#d7261e",
-    "playlists": [1306931615, 9268293682, 5619143162, 5619144082]
+    "playlists": [1306931615, 9268293682, 5619143162, 5619144082],
+    "exclude": [
+      "Rosana — O Amor e o Poder (The Power of Love)",
+      "Ed Motta — Manuel",
+      "Ed Motta — Vamos dançar",
+      "Jane Duboc — Sonhos",
+      "Guilherme Arantes — Cheia de Charme"
+    ]
   },
   {
     "id": "sertanejo",
     "name": "Sertanejo",
     "description": "Do modão ao feminejo",
     "color": "#b06a2c",
-    "playlists": [5207214368, 1336751325, 5518744242, 5519638442]
+    "playlists": [5207214368, 1336751325, 5518744242, 5519638442],
+    "exclude": [
+      "DJ Kevin — É Linda Mas é Lisa",
+      "Fagner — Borbulhas de Amor (Tenho um Coração) [Borbujas de Amor]",
+      "Fagner — Cabecinha no Ombro (feat. Roberta Miranda)",
+      "Tchê Garotos — Menininha"
+    ]
   },
   {
     "id": "pagode",
     "name": "Pagode & Samba",
     "description": "Dos anos 90 até hoje",
     "color": "#f4b400",
-    "playlists": [1188698803, 6119830224, 6119915844]
+    "playlists": [1188698803, 6119830224, 6119915844],
+    "exclude": [
+      "Sampa Crew — Eterno Amor"
+    ]
   },
   {
     "id": "rap-trap",
     "name": "Rap & Trap BR",
     "description": "Rap, trap e drill",
     "color": "#8ac926",
-    "playlists": [11881565941, 5656652602, 5658958102]
+    "playlists": [11881565941, 5656652602, 5658958102],
+    "exclude": [
+      "Mc Kevin — Vergonha Pra Mídia 3",
+      "Charlie Brown JR. / Part. Especial: Sacramento MC's — Vivendo A Vida Numa Louca Viagem"
+    ]
   },
   {
     "id": "mpb",
     "name": "MPB",
     "description": "Os clássicos da MPB",
     "color": "#2a9d8f",
-    "playlists": [556502217, 5691936222]
+    "playlists": [556502217, 5691936222],
+    "exclude": [
+      "Charlie Brown Jr. — Zóio De Lula",
+      "Skank — Resposta",
+      "Os Paralamas do Sucesso — Aonde Quer Que Eu Vá",
+      "Los Hermanos — Anna Júlia",
+      "Engenheiros do Hawaii — Era um Garoto, Que Como Eu, Amava os Beatles e os Rolling Stones",
+      "Jota Quest — Fácil",
+      "Os Paralamas do Sucesso — Uma Brasileira",
+      "Biquini Cavadão — Vento Ventania",
+      "Cidade Negra — A Estrada",
+      "Leoni — Garotos II - O Outro Lado",
+      "Kid Abelha — Como eu quero",
+      "Capital Inicial — Eu Vou Estar",
+      "Jota Quest — Sempre Assim",
+      "Os Paralamas do Sucesso — Meu Erro",
+      "Os Paralamas do Sucesso — Saber Amar",
+      "Legião Urbana — Mais Do Mesmo",
+      "Kid Abelha — Por que não eu?",
+      "Pato Fu — Sobre o Tempo",
+      "Banda Eddie — O Baile de Betinha",
+      "Ira! — Você Não Serve Pra Mim"
+    ]
   },
   {
     "id": "forro-axe",
@@ -167,6 +219,9 @@
     "name": "Eletrônica",
     "description": "EDM, house e pista",
     "color": "#4361ee",
-    "playlists": [1902101402]
+    "playlists": [1902101402],
+    "exclude": [
+      "The Notorious B.I.G. — Notorious Thugs (feat. Bone Thugs-n-Harmony) [Solomun Remix]"
+    ]
   }
 ]
