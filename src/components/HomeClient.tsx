@@ -41,8 +41,10 @@ export function HomeClient({ info }: { info: Info }) {
     <>
       <section className="flex flex-wrap items-end justify-between gap-6 border-b-2 border-fg pb-6">
         <div>
-          <h1 className="font-mono text-xs text-muted">Toca Aí · jogo de adivinhar música</h1>
-          <p className="display mt-3 text-7xl sm:text-8xl">{day ? `Disco nº ${day}` : "Disco do dia"}</p>
+          <h1 className="display text-7xl sm:text-8xl">
+            <span className="sr-only">Jogo de adivinhar música: </span>
+            {day ? `Disco nº ${day}` : "Disco do dia"}
+          </h1>
           <p className="mt-2 text-muted first-letter:uppercase">{dateLabel}</p>
         </div>
         <div className="sm:text-right">

@@ -63,7 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </span>
             <span className="leading-none">
               <span className="display block text-[34px] transition group-hover:text-accent sm:text-[40px]">Toca Aí</span>
-              <span className="block font-mono text-[11px] text-muted">adivinhe a música</span>
+              <span className="block font-mono text-[11px] text-muted">jogo de adivinhar música</span>
             </span>
           </Link>
           <nav className="flex items-center gap-5">
@@ -77,7 +77,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </header>
         <main className="mx-auto w-full max-w-5xl flex-1 px-5 pb-20">{children}</main>
         <footer className="mx-auto flex w-full max-w-5xl flex-wrap gap-x-4 gap-y-1 px-5 py-8 text-xs text-muted">
-          <span>Projeto sem fins lucrativos.</span>
+          <span>Toca Aí: jogo de adivinhar música grátis, sem cadastro e sem fins lucrativos.</span>
           <span>
             Prévias de áudio, capas e fotos:{" "}
             <a href="https://www.deezer.com" target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-fg">

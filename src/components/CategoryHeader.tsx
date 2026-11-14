@@ -13,7 +13,9 @@ export function CategoryHeader({ category, total, explicit }: { category: Catego
       <div>
         <Breadcrumbs items={[{ label: "Início", href: "/" }, { label: category.name }]} />
         <h1 className="display mt-3 text-6xl sm:text-8xl">{category.name}</h1>
-        <p className="mt-3 text-lg text-muted">{category.description}</p>
+        <p className="mt-3 text-lg text-muted">
+          Adivinhe músicas de {category.name}: {category.description.toLowerCase()}
+        </p>
         <p className="mt-1 text-sm text-muted">
           {total} músicas · com {artists.slice(0, 3).map((a) => a.name).join(", ")} e mais
         </p>
