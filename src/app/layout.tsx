@@ -2,45 +2,30 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { Anton, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { preconnect } from "react-dom";
+import { categories } from "@/lib/categories";
+import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const sans = IBM_Plex_Sans({ variable: "--font-plex-sans", subsets: ["latin"], weight: ["400", "500", "600"] });
-const mono = IBM_Plex_Mono({ variable: "--font-plex-mono", subsets: ["latin"], weight: ["400", "500"] });
-const anton = Anton({ variable: "--font-anton", subsets: ["latin"], weight: "400" });
+const mono = IBM_Plex_Mono({ variable: "--font-plex-mono", subsets: ["latin"], weight: ["400", "500"], preload: false });
+const anton = Anton({ variable: "--font-anton", subsets: ["latin"], weight: "400", display: "block" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    default: `${SITE_NAME} · Jogo de adivinhar música`,
-    template: `%s · ${SITE_NAME}`,
-  },
+  title: { default: SITE_TITLE, template: `%s · ${SITE_NAME}` },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
-  keywords: [
-    "jogo de adivinhar música",
-    "adivinhe a música",
-    "quiz de música",
-    "quiz musical",
-    "qual é a música",
-    "heardle em português",
-    "jogo de música online",
-    "adivinhar música pelo trecho",
-  ],
+  keywords: SITE_KEYWORDS,
   category: "games",
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    locale: "pt_BR",
-    siteName: SITE_NAME,
-    title: `${SITE_NAME} · Jogo de adivinhar música`,
-    description: SITE_DESCRIPTION,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
   },
-  twitter: {
-    card: "summary_large_image",
-    title: `${SITE_NAME} · Jogo de adivinhar música`,
-    description: SITE_DESCRIPTION,
-  },
+  ...(process.env.GOOGLE_SITE_VERIFICATION ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } } : {}),
+  openGraph: { type: "website", locale: "pt_BR", siteName: SITE_NAME, title: SITE_TITLE, description: SITE_DESCRIPTION },
+  twitter: { card: "summary_large_image", title: SITE_TITLE, description: SITE_DESCRIPTION },
 };
 
 export const viewport: Viewport = {
@@ -51,6 +36,7 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  preconnect("https://cdn-images.dzcdn.net");
   return (
     <html lang="pt-BR" className={`${sans.variable} ${mono.variable} ${anton.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans text-[15px]">
@@ -78,6 +64,25 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </header>
         <main className="mx-auto w-full max-w-5xl flex-1 px-5 pb-20">{children}</main>
         <footer className="mx-auto flex w-full max-w-5xl flex-wrap gap-x-4 gap-y-1 px-5 py-8 text-xs text-muted">
+          <nav
+            aria-label="Jogos de adivinhar música por categoria"
+            className="mb-3 w-full"
+          >
+            <p className="font-semibold text-fg">Jogos de adivinhar música</p>
+            <ul className="mt-1 flex flex-wrap gap-x-4">
+              {categories.map((c) => (
+                <li key={c.id}>
+                  <Link
+                    href={`/categoria/${c.id}`}
+                    prefetch={false}
+                    className="inline-block py-1 underline-offset-2 hover:text-fg hover:underline"
+                  >
+                    {c.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <span>Toca Aí: jogo de adivinhar música grátis, sem cadastro e sem fins lucrativos.</span>
           <span>
             Prévias de áudio, capas e fotos:{" "}
