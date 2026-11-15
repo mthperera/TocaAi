@@ -18,7 +18,7 @@ export function Turntable({
     <div className="relative aspect-square w-full">
       <div className="absolute top-[6%] left-0 w-[88%]">
         <Vinyl color={color} spinning={spinning}>
-          {cover && <Image src={coverUrl(cover, 250)} alt="" fill sizes="140px" className="object-cover" />}
+          {cover && <Image src={coverUrl(cover, 250)} alt="" fill unoptimized className="object-cover" />}
         </Vinyl>
         {!cover && (
           <span

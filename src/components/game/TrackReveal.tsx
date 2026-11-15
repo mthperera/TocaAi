@@ -20,6 +20,7 @@ export function TrackCard({
       {showCover && (
         <Image
           src={coverUrl(track.cover, 250)}
+          unoptimized
           alt=""
           width={88}
           height={88}
