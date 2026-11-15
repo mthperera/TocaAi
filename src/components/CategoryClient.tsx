@@ -7,7 +7,8 @@ import { DIFFICULTIES, isDifficulty, textOn, type Category, type Difficulty } fr
 import { dayNumber, formatDay, keyFromDayNumber } from "@/lib/daily";
 import { ladderStages, MODES, type ModeId } from "@/lib/modes";
 import { gameKey, useProgress, useToday, type SavedGame } from "@/lib/progress";
-import { Countdown, GameStatus, ModeIcon, Vinyl, gameTone } from "./ui";
+import { Countdown, GameStatus, ModeIcon, gameTone } from "./ui";
+import { Vinyl } from "./Vinyl";
 
 type Pools = Record<Difficulty, { size: number; yearMode: boolean }>;
 

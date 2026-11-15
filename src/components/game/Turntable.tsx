@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { coverUrl } from "@/lib/catalog";
 import { textOn } from "@/lib/categories";
-import { Vinyl } from "../ui";
+import { Vinyl } from "../Vinyl";
 
 export function Turntable({
   color,

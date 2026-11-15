@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useRef } from "react";
 import { formatDay, keyFromDayNumber } from "@/lib/daily";
 import { gameKey, useProgress } from "@/lib/progress";
-import { Vinyl, gameTone } from "../ui";
+import { gameTone } from "../ui";
+import { Vinyl } from "../Vinyl";
 
 const LABEL = {
   good: "var(--good)",

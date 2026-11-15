@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { coverUrl, popularity, type Track } from "@/lib/catalog";
-import { ExplicitBadge } from "../ui";
+import { ExplicitBadge } from "../ExplicitBadge";
 
 export function TrackCard({
   track,

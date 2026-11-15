@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { artistPictureUrl, type Artist, type Category } from "@/lib/categories";
-import { Vinyl } from "./ui";
+import { Vinyl } from "./Vinyl";
 
 export function Sleeve({
   category,

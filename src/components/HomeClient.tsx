@@ -7,7 +7,9 @@ import { dayNumber } from "@/lib/daily";
 import { MODES } from "@/lib/modes";
 import { gameKey, useProgress, useToday, type SavedGame } from "@/lib/progress";
 import { Sleeve } from "./Sleeve";
-import { Countdown, ExplicitBadge, Square, Vinyl, gameTone } from "./ui";
+import { ExplicitBadge } from "./ExplicitBadge";
+import { Countdown, Square, gameTone } from "./ui";
+import { Vinyl } from "./Vinyl";
 
 type Info = Record<string, { size: number; explicit: boolean }>;
 
