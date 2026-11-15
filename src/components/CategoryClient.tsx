@@ -119,8 +119,8 @@ export function CategoryClient({ category, pools }: { category: Category; pools:
         {today && (
           <div className="mt-6 grid grid-cols-4 gap-x-3 gap-y-5 sm:grid-cols-6 lg:grid-cols-10">
             {Array.from({ length: LOCKED_PREVIEW }, (_, i) => LOCKED_PREVIEW - i).map((k) => (
-              <div key={`locked-${k}`} className="text-center opacity-35" title={`Libera em ${formatDay(keyFromDayNumber(todayNumber + k))}`}>
-                <Vinyl color="var(--line)" className="w-full" />
+              <div key={`locked-${k}`} className="text-center" title={`Libera em ${formatDay(keyFromDayNumber(todayNumber + k))}`}>
+                <Vinyl color="var(--line)" className="w-full opacity-35" />
                 <p className="mt-1.5 font-mono text-xs">{todayNumber + k}</p>
                 <p className="text-[11px] text-muted">{k === 1 ? "amanhã" : `em ${k} dias`}</p>
               </div>

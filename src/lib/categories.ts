@@ -49,12 +49,20 @@ export function artistPictureUrl(md5: string, size = 250): string {
   return `https://cdn-images.dzcdn.net/images/artist/${md5}/${size}x${size}-000000-80-0-0.jpg`;
 }
 
-export function textOn(hex: string): "#ffffff" | "#141210" {
+function luminance(hex: string): number {
   const n = parseInt(hex.slice(1), 16);
   const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((c) => {
     const v = c / 255;
     return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
   });
-  const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  return lum > 0.4 ? "#141210" : "#ffffff";
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+const INK = "#141210";
+
+export function textOn(hex: string): "#ffffff" | "#141210" {
+  const l = luminance(hex);
+  const onWhite = 1.05 / (l + 0.05);
+  const onInk = (l + 0.05) / (luminance(INK) + 0.05);
+  return onWhite >= onInk ? "#ffffff" : INK;
 }
