@@ -7,6 +7,7 @@ export type Mode = {
   name: string;
   tagline: string;
   howTo: string;
+  searchTitle: string;
   kind: "ladder" | "rounds";
   rounds?: number;
 };
@@ -17,6 +18,7 @@ export const MODES: Mode[] = [
     name: "Clássico",
     tagline: "O trecho cresce a cada erro",
     howTo: "Começa com 1 segundo da música. Cada erro ou pulo libera mais: 1s, 2s, 4s, 7s, 11s e 16s. Seis chances.",
+    searchTitle: "Adivinhe a música{de} pelo trecho",
     kind: "ladder",
   },
   {
@@ -24,6 +26,7 @@ export const MODES: Mode[] = [
     name: "Ao contrário",
     tagline: "A música tocada de trás pra frente",
     howTo: "Você ouve o trecho invertido, cada vez maior. Nas duas últimas chances ele toca do jeito certo.",
+    searchTitle: "Adivinhe a música{de} tocada ao contrário",
     kind: "ladder",
   },
   {
@@ -31,6 +34,7 @@ export const MODES: Mode[] = [
     name: "Debaixo d'água",
     tagline: "O som vai ficando nítido",
     howTo: "A música começa toda abafada, como se tocasse na casa do vizinho. A cada tentativa o filtro abre um pouco mais.",
+    searchTitle: "Adivinhe a música{de} abafada",
     kind: "ladder",
   },
   {
@@ -38,6 +42,7 @@ export const MODES: Mode[] = [
     name: "Capa pixelada",
     tagline: "Adivinhe pela capa do álbum",
     howTo: "Sem áudio: a capa aparece toda pixelada e ganha resolução a cada tentativa.",
+    searchTitle: "Adivinhe a música{de} pela capa do álbum",
     kind: "ladder",
   },
   {
@@ -45,6 +50,7 @@ export const MODES: Mode[] = [
     name: "Relâmpago",
     tagline: "10 músicas, 4 opções, vale a velocidade",
     howTo: "A música começa a tocar e você escolhe entre 4 opções. Quanto mais rápido acertar, mais pontos (até 1000 por música).",
+    searchTitle: "Quiz relâmpago{de}: 10 músicas, 4 opções",
     kind: "rounds",
     rounds: 10,
   },
@@ -53,10 +59,17 @@ export const MODES: Mode[] = [
     name: "Qual o ano?",
     tagline: "Acerte o ano em que a música estourou",
     howTo: "Você vê e ouve a música e chuta o ano em que ela estava nas paradas. Na mosca vale 100; cada ano de diferença tira pontos.",
+    searchTitle: "Qual o ano da música?{quiz}",
     kind: "rounds",
     rounds: 5,
   },
 ];
+
+export function modeSearchTitle(mode: Mode, categoryName: string | null): string {
+  return mode.searchTitle
+    .replace("{de}", categoryName ? ` de ${categoryName}` : "")
+    .replace("{quiz}", categoryName ? ` Quiz de ${categoryName}` : "");
+}
 
 export function getMode(id: string): Mode | undefined {
   return MODES.find((m) => m.id === id);

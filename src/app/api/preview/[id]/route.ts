@@ -1,4 +1,4 @@
-import { getTrack } from "@/lib/catalog";
+import { getTrack } from "@/lib/catalog.server";
 
 const UNAVAILABLE = "Prévia indisponível";
 

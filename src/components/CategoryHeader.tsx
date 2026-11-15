@@ -1,7 +1,7 @@
 import { categoryArtists, type Category } from "@/lib/categories";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { Sleeve } from "./Sleeve";
-import { ExplicitBadge } from "./ui";
+import { ExplicitBadge } from "./ExplicitBadge";
 
 export function CategoryHeader({ category, total, explicit }: { category: Category; total: number; explicit: boolean }) {
   const artists = categoryArtists(category.id, 6);

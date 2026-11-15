@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useRef } from "react";
 import { formatDay, keyFromDayNumber } from "@/lib/daily";
 import { gameKey, useProgress } from "@/lib/progress";
-import { Vinyl, gameTone } from "../ui";
+import { gameTone } from "../ui";
+import { Vinyl } from "../Vinyl";
 
 const LABEL = {
   good: "var(--good)",
@@ -67,8 +68,8 @@ export function DayPicker({ base, categoryId, categoryColor, modeId, difficulty,
           </div>
 
           <div className="-mx-2 mt-4 grid max-h-[60vh] grid-cols-4 gap-x-3 gap-y-5 overflow-y-auto px-2 pt-2 pb-1 sm:grid-cols-6">
-            <div className="text-center opacity-35" title="Libera à meia-noite">
-              <Vinyl color="var(--line)" className="w-full" />
+            <div className="text-center" title="Libera à meia-noite">
+              <Vinyl color="var(--line)" className="w-full opacity-35" />
               <p className="mt-1.5 font-mono text-xs">nº {today + 1}</p>
               <p className="text-[11px] text-muted">amanhã</p>
             </div>

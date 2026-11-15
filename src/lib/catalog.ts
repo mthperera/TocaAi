@@ -1,4 +1,3 @@
-import catalogJson from "@/data/catalog.json";
 import type { Difficulty } from "./categories";
 import { fold, normalize } from "./text";
 
@@ -21,41 +20,69 @@ const TIERS: Record<Exclude<Difficulty, "todas">, [number, number]> = {
 
 type RawTrack = { i: number; t: string; a: string; c: string; r: number; y?: number; e?: 1; p?: number[] };
 
-const raw = catalogJson as { generatedAt: string; tracks: RawTrack[]; categories: Record<string, number[]> };
+export const CATALOG_URL = "/api/catalog";
 
-export const tracks: Track[] = raw.tracks.map((t) => ({
-  id: t.i,
-  title: t.t,
-  artist: t.a,
-  cover: t.c,
-  rank: t.r,
-  year: t.y,
-  explicit: t.e === 1,
-  groups: t.p ?? [],
-}));
+export type RawCatalog = { generatedAt: string; tracks: RawTrack[]; categories: Record<string, number[]> };
 
-const byId = new Map(tracks.map((t) => [t.id, t]));
+type SearchEntry = { track: Track; hay: string; title: string; artist: string };
 
-const categoryTracks: Record<string, Track[]> = Object.fromEntries(
-  Object.entries(raw.categories).map(([id, ids]) => [id, ids.map((i) => byId.get(i)).filter((t) => t !== undefined)]),
-);
-categoryTracks.mix = tracks;
+type State = {
+  tracks: Track[];
+  byId: Map<number, Track>;
+  categoryTracks: Record<string, Track[]>;
+  searchIndex: SearchEntry[] | null;
+};
+
+let state: State | null = null;
+
+export function initCatalog(raw: RawCatalog) {
+  if (state) return;
+  const tracks: Track[] = raw.tracks.map((t) => ({
+    id: t.i,
+    title: t.t,
+    artist: t.a,
+    cover: t.c,
+    rank: t.r,
+    year: t.y,
+    explicit: t.e === 1,
+    groups: t.p ?? [],
+  }));
+  const byId = new Map(tracks.map((t) => [t.id, t]));
+  const categoryTracks: Record<string, Track[]> = Object.fromEntries(
+    Object.entries(raw.categories).map(([id, ids]) => [id, ids.map((i) => byId.get(i)).filter((t) => t !== undefined)]),
+  );
+  categoryTracks.mix = tracks;
+  state = { tracks, byId, categoryTracks, searchIndex: null };
+}
+
+export function catalogReady(): boolean {
+  return state !== null;
+}
+
+function data(): State {
+  if (!state) throw new Error("Catálogo ainda não carregado.");
+  return state;
+}
+
+export function trackCount(): number {
+  return data().tracks.length;
+}
 
 export function getTrack(id: number): Track | undefined {
-  return byId.get(id);
+  return data().byId.get(id);
 }
 
 export function categorySize(categoryId: string): number {
-  return categoryTracks[categoryId]?.length ?? 0;
+  return data().categoryTracks[categoryId]?.length ?? 0;
 }
 
 export function hasExplicitContent(categoryId: string): boolean {
-  const all = categoryTracks[categoryId] ?? [];
+  const all = data().categoryTracks[categoryId] ?? [];
   return all.length > 0 && all.filter((t) => t.explicit).length / all.length >= 0.15;
 }
 
 export function getPool(categoryId: string, difficulty: Difficulty): Track[] {
-  const all = categoryTracks[categoryId] ?? [];
+  const all = data().categoryTracks[categoryId] ?? [];
   if (difficulty === "todas") return all;
   const [from, to] = TIERS[difficulty];
   return all.slice(Math.floor(all.length * from), Math.floor(all.length * to));
@@ -77,19 +104,23 @@ export function popularity(track: Track): number {
   return Math.round(track.rank / 10000);
 }
 
-const searchIndex = tracks.map((t) => ({
-  track: t,
-  hay: fold(`${t.title} ${t.artist}`),
-  title: fold(t.title),
-  artist: fold(t.artist),
-}));
+function searchIndex(): SearchEntry[] {
+  const d = data();
+  d.searchIndex ??= d.tracks.map((t) => ({
+    track: t,
+    hay: fold(`${t.title} ${t.artist}`),
+    title: fold(t.title),
+    artist: fold(t.artist),
+  }));
+  return d.searchIndex;
+}
 
 export function searchTracks(query: string, limit = 8): Track[] {
   const q = fold(query);
   const words = q.split(" ").filter(Boolean);
   if (words.length === 0) return [];
   const scored: { track: Track; score: number }[] = [];
-  for (const { track, hay, title, artist } of searchIndex) {
+  for (const { track, hay, title, artist } of searchIndex()) {
     if (!words.every((w) => hay.includes(w))) continue;
     const tokens = hay.split(" ");
     let score = 0;

@@ -24,33 +24,6 @@ export function Countdown({ className = "" }: { className?: string }) {
   return <span className={`font-mono tabular-nums ${className}`}>{`${h}:${m}:${s}`}</span>;
 }
 
-export function Vinyl({
-  color,
-  spinning = false,
-  slow = false,
-  absolute = false,
-  bigLabel = false,
-  className = "",
-  children,
-}: {
-  color: string;
-  spinning?: boolean;
-  slow?: boolean;
-  absolute?: boolean;
-  bigLabel?: boolean;
-  className?: string;
-  children?: ReactNode;
-}) {
-  const motion = `${slow ? "spin-slow" : "spin"} ${spinning ? "" : "paused"}`;
-  return (
-    <div className={`vinyl ${absolute ? "absolute" : "relative"} aspect-square ${motion} ${className}`}>
-      <div className="vinyl-label" style={{ background: color, ...(bigLabel ? { inset: "22%" } : {}) }}>
-        {children}
-      </div>
-    </div>
-  );
-}
-
 export type SquareTone = "good" | "mid" | "bad" | "skip" | "empty";
 
 const SQUARE: Record<SquareTone, string> = {
@@ -91,18 +64,6 @@ export function GameStatus({ game, attempts }: { game: SavedGame | undefined; at
     </span>
   ) : (
     <span className={`${base} bg-bad text-white`}>Errou</span>
-  );
-}
-
-export function ExplicitBadge({ className = "" }: { className?: string }) {
-  return (
-    <span
-      title="Letra explícita"
-      aria-label="Letra explícita"
-      className={`inline-grid size-4 shrink-0 place-items-center rounded-[3px] bg-fg font-mono text-[10px] leading-none font-bold text-bg ${className}`}
-    >
-      E
-    </span>
   );
 }
 

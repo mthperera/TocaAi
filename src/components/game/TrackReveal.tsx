@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { coverUrl, popularity, type Track } from "@/lib/catalog";
-import { ExplicitBadge } from "../ui";
+import { ExplicitBadge } from "../ExplicitBadge";
 
 export function TrackCard({
   track,
@@ -20,6 +20,7 @@ export function TrackCard({
       {showCover && (
         <Image
           src={coverUrl(track.cover, 250)}
+          unoptimized
           alt=""
           width={88}
           height={88}
