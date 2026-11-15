@@ -49,7 +49,7 @@ export function Playable({
   const tracks = usePlayable(req.fixed, req.candidates, req.needed);
   if (!tracks) {
     return (
-      <p className="flex items-center justify-center gap-3 py-16 text-muted">
+      <p className="flex min-h-screen items-start justify-center gap-3 py-16 text-muted">
         <Equalizer /> Preparando o disco…
       </p>
     );

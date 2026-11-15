@@ -1,5 +1,5 @@
 import { HomeClient } from "@/components/HomeClient";
-import { categorySize, hasExplicitContent, tracks } from "@/lib/catalog";
+import { categorySize, hasExplicitContent, trackCount } from "@/lib/catalog.server";
 import { categories } from "@/lib/categories";
 import { MODES } from "@/lib/modes";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -44,7 +44,7 @@ export default function Home() {
             tem um desafio diferente por modo e por nível, e os dias anteriores ficam no arquivo para jogar depois.
           </p>
           <p className="mt-3 text-muted">
-            São {tracks.length.toLocaleString("pt-BR")} músicas em {categories.length} categorias, do funk e do
+            São {trackCount().toLocaleString("pt-BR")} músicas em {categories.length} categorias, do funk e do
             sertanejo ao rock, ao pop, aos anos 80, 90 e 2000 e aos virais do TikTok. É grátis, não precisa de
             cadastro e funciona no celular.
           </p>

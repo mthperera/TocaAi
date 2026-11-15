@@ -11,6 +11,7 @@ import {
 } from "@/lib/categories";
 import { dailyTracks, dayNumber, formatDay, isDateKey, randomSeed } from "@/lib/daily";
 import { getMode, type Mode } from "@/lib/modes";
+import { retryCatalog, useCatalogStatus } from "@/lib/catalog-client";
 import { gameKey, useProgress, useToday } from "@/lib/progress";
 import { Countdown, buttonSecondary } from "../ui";
 import { Breadcrumbs } from "../Breadcrumbs";
@@ -82,8 +83,22 @@ export function GameClient({ categoryId, modeId }: { categoryId: string; modeId:
     categoryId,
     modeId,
   );
+  const catalog = useCatalogStatus();
 
-  if (!today || !day) return null;
+  if (catalog === "error") {
+    return (
+      <div className="min-h-screen">
+        <p className="rounded-xl border-2 border-dashed border-line py-12 text-center text-muted">
+          Não foi possível carregar as músicas.{" "}
+          <button onClick={retryCatalog} className="font-semibold text-fg underline underline-offset-4 hover:text-accent">
+            Tentar de novo
+          </button>
+        </p>
+      </div>
+    );
+  }
+
+  if (!today || !day || catalog !== "ready") return <div className="min-h-screen" />;
 
   if (!practice && (n > todayN || n < 1)) {
     return (

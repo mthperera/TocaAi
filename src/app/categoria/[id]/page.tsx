@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { CategoryClient } from "@/components/CategoryClient";
 import { CategoryHeader } from "@/components/CategoryHeader";
-import { categorySize, getPool, getYearPool, hasExplicitContent, MIN_YEAR_POOL } from "@/lib/catalog";
+import { categorySize, getPool, getYearPool, hasExplicitContent, MIN_YEAR_POOL } from "@/lib/catalog.server";
 import { categories, DIFFICULTIES, getCategory, type Difficulty } from "@/lib/categories";
 import { MODES } from "@/lib/modes";
 

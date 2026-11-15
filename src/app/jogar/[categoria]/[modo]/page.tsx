@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { preload } from "react-dom";
 import { Suspense } from "react";
 import { GameClient, GameNav } from "@/components/game/GameClient";
 import { GameTitle } from "@/components/game/GameTitle";
 import { categories, getCategory } from "@/lib/categories";
+import { CATALOG_URL } from "@/lib/catalog";
 import { getMode, MODES } from "@/lib/modes";
 
 type Props = PageProps<"/jogar/[categoria]/[modo]">;
@@ -40,13 +42,14 @@ async function GameContent({ params }: { params: Props["params"] }) {
   const category = getCategory(categoria);
   const mode = getMode(modo);
   if (!category || !mode) notFound();
+  preload(CATALOG_URL, { as: "fetch", crossOrigin: "anonymous" });
   return (
     <>
       <Suspense fallback={<div className="h-12" />}>
         <GameNav categoryId={categoria} modeId={modo} />
       </Suspense>
       <GameTitle category={category} mode={mode} />
-      <Suspense fallback={null}>
+      <Suspense fallback={<div className="min-h-screen" />}>
         <GameClient categoryId={categoria} modeId={modo} />
       </Suspense>
     </>
